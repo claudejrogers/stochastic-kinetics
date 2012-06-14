@@ -8,6 +8,15 @@
 
 #include "stochastic_kinetics.h"
 
+// Lokia reaction, Figure 8
+
+void lokia_h(double *h, int *y)
+{
+    h[0] = y[0];
+    h[1] = y[0]*y[1];
+    h[2] = y[1];
+}
+
 void get_h(double *h, int *y)
 {
     h[0] = 1.0;
@@ -19,6 +28,17 @@ void get_h(double *h, int *y)
 int main(int argc, const char * argv[])
 {
 
+    // Lokia
+    int yl[] = {1000, 1000};
+    int update_lokia[3][2] = {
+        {1, 0},
+        {-1, 1},
+        {0, -1}
+    };
+    double cl[] = {10.0, 0.01, 10.0};
+    gillespie("lokia.dat", yl, 2, 3, update_lokia, cl, lokia_h, 30);
+
+    // Brusselator
     int y[] = {1000, 2000};
     int update_matrix[4][2] = {
         {1, 0},

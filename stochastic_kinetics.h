@@ -11,6 +11,8 @@
 #define stochastic_test_stochastic_kinetics_h
 #include <stdio.h>
 
+typedef void(*H_FUNC)(double*, int*);
+
 // Write data to file for each iteration
 void write_line(FILE *f, double t, int *y, int N);
 
@@ -23,13 +25,13 @@ int get_mu(double *a, double r2, int M);
 
 void update_y(int *y, int *update_array, int N);
 
-void gillespie(char *filename, 
+void gillespie(char *filename,
                int *y,
                int N,
                int M,
-               int update_matrix[M][N], 
+               int update_matrix[M][N],
                double *c, 
-               void (*get_h)(double*, int*),
+               H_FUNC get_h,
                double STOP_TIME);
 
 #endif

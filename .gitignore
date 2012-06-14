@@ -1,3 +1,5 @@
 *.o
 *.swp
 .DS*
+stochastic_kinetics
+*.dat

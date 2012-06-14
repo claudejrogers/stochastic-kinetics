@@ -49,7 +49,6 @@ int get_mu(double *a, double r2, int M)
         if (r2a0 <= total) {
             return i;
         }
-        
     }
     return 0;
 }
@@ -62,13 +61,13 @@ void update_y(int *y, int *update_array, int N)
     }
 }
 
-void gillespie(char *filename, 
+void gillespie(char *filename,
                int *y,
                int N,
                int M,
-               int update_matrix[M][N], 
-               double *c, 
-               void (*get_h)(double*, int*),
+               int update_matrix[M][N],
+               double *c,
+               H_FUNC get_h,
                double STOP_TIME)
 {
     FILE *fdata;

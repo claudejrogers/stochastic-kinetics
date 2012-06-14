@@ -1,7 +1,8 @@
 An implementation of a stochastic simulation algorithm (more commonly known as
 the Gillespie algorithm) after
 
-D. T. Gillespie Exact stochastic simulation of coupled chemical reactions. 
+D. T. Gillespie, Exact stochastic simulation of coupled chemical reactions. 
 J. Phys. Chem. 81, 2340–2361 (1977).
 
-As it stands, the program reproduces the data for Figure 14 from that paper.
+As it stands, the program reproduces the data for the Lokia simulation 
+(Figures 8,9) and the Brusselator (Figure 14) from that paper.
