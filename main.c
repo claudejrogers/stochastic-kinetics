@@ -49,6 +49,6 @@ int main(int argc, const char * argv[])
     double c[] = {5000.0, 50.0, 0.00005, 5.0};
     gillespie("brusselator.dat", y, 2, 4, 
               update_matrix, c, get_h, 15.0);
-	return 0;
+    return 0;
 }
 

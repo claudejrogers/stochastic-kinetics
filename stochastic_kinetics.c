@@ -78,7 +78,7 @@ void gillespie(char *filename,
     double *a;
     h = (double *) malloc(M*sizeof(double));
     a = (double *) malloc(M*sizeof(double));
-    double r1, r2, tau, a0;
+    double r1, r2, a0;
     int mu;
     unsigned int iseed = (unsigned int)time(NULL);
   	srand (iseed);
@@ -88,10 +88,10 @@ void gillespie(char *filename,
         a0 = sum_a(a, M);
         r1 = ((double)rand()/(double)RAND_MAX);
 		r2 = ((double)rand()/(double)RAND_MAX);
-        tau = (1.0 / a0) * log(1.0 / r1);
+        if (a0 == 0) break;
+        t += log(1.0 / r1) / a0;
         mu = get_mu(a, r2, M);
         update_y(y, update_matrix[mu], N);
-        t += tau;
         write_line(fdata, t, y, N);
     }
     free((void *)h);
