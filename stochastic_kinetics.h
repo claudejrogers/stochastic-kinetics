@@ -12,6 +12,7 @@
 #include <stdio.h>
 
 typedef void(*H_FUNC)(double*, int*);
+typedef void(^H_BLOCK)(double*, int*);
 
 // Write data to file for each iteration
 void write_line(FILE *f, double t, int *y, int N);
@@ -33,5 +34,14 @@ void gillespie(char *filename,
                double *c, 
                H_FUNC get_h,
                double STOP_TIME);
+
+void gillespie_b(char *filename,
+                 int *y,
+                 int N,
+                 int M,
+                 int update_matrix[M][N],
+                 double *c,
+                 H_BLOCK get_h,
+                 double STOP_TIME);
 
 #endif

@@ -28,6 +28,24 @@ void get_h(double *h, int *y)
 int main(int argc, const char * argv[])
 {
 
+    // Example 2
+    int x1[] = {10};
+    int x2[] = {3000};
+    double cx[] = {5.0, 0.005};
+    int update_ex2[2][1] = {
+        {1},
+        {-2}
+    };
+    gillespie_b("ex21.dat", x1, 1, 2, update_ex2, cx, ^(double *h, int *y) {
+        h[0] = y[0];
+        h[1] = y[0] * (y[0] - 1) / 2;
+    }, 5);
+    
+    gillespie_b("ex22.dat", x2, 1, 2, update_ex2, cx, ^(double *h, int *y) {
+        h[0] = y[0];
+        h[1] = y[0] * (y[0] - 1) / 2;
+    }, 5);
+
     // Lokia
     int yl[] = {1000, 1000};
     int update_lokia[3][2] = {
